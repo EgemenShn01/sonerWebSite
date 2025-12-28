@@ -232,23 +232,28 @@ a:hover{ text-decoration: underline; }
   gap:12px;
   margin-bottom: 10px;
 }
+
+/* Gradient çerçeve */
 .avatar__ring{
-  width: 42px; height: 42px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
+  padding: 3px; /* çerçeve kalınlığı */
   background: linear-gradient(90deg, rgba(102,227,255,.9), rgba(124,92,255,.85));
-  filter: blur(.2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  filter: none;
 }
-.avatar__img{
-  margin-left: -32px;
-  width: 46px; height: 46px;
-  border-radius: 14px;
-  display:grid;
-  place-items:center;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  background: rgba(255,255,255,.10);
-  border: 1px solid var(--line);
+
+/* Fotoğrafın kendisi */
+.avatar__photo{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(255,255,255,.18);
 }
+
 
 .side__title{
   margin: 10px 0 10px;
@@ -450,4 +455,49 @@ a:hover{ text-decoration: underline; }
   }
   .quick{ grid-template-columns: 1fr; }
   .nav{ display:none; }
+}
+/* Hero altındaki boş alanı foto ile dolduran banner */
+.hero__media{
+  margin-top: 20px;
+  grid-column: 1 / -1;       /* iki kolonu da kapla */
+  height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,.04);
+}
+
+.hero__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+.hero__media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(11,18,32,.15), rgba(11,18,32,.90));
+}
+
+.hero__mediaContent{
+  position:absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+}
+
+.hero__mediaContent h3{
+  margin: 0;
+  font-size: 18px;
+}
+
+.hero__mediaContent p{
+  margin-top: 6px;
+  color: rgba(255,255,255,.72);
 }
